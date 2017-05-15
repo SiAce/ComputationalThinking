@@ -102,7 +102,7 @@ def GenerateOne():
             high, low = 0, 0
 
             for person in data:
-                if person[14] == ">50K.\n":
+                if person[14] == ">50K":
                     high += 1
                 else:
                     low += 1
@@ -131,11 +131,11 @@ def GenerateTwo():
         two_variable_canvas.delete("all")
 
         variables = {"Education": ["Bachelors", "Masters", "Doctorate", "Others"], "Race": ["White", "Others"],
-                     "Gender": ["Male", "Female"], "Income": [">50K.\n", "<=50K.\n"]}
+                     "Gender": ["Male", "Female"], "Income": [">50K", "<=50K"]}
         variable_column = {"Education": 3, "Race": 8, "Gender": 9, "Income": 14}
         variable_num = {"Education": 4, "Race": 2, "Gender": 2, "Income": 2}
-        variable_list = {"Bachelors": 0, "Masters": 1, "Doctorate": 2, "White": 0, "Male": 0, "Female": 1, ">50K.\n": 0,
-                         "<=50K.\n": 1}
+        variable_list = {"Bachelors": 0, "Masters": 1, "Doctorate": 2, "White": 0, "Male": 0, "Female": 1, ">50K": 0,
+                         "<=50K": 1}
 
         value_list = []
         for i in range(variable_num[x_variable.get()]):
@@ -183,7 +183,7 @@ f = open("data.txt", "r")
 data = []
 line = f.readline()
 while line != "":
-    data.append(line.split(", "))
+    data.append(line.strip(".\n").split(", "))
     line = f.readline()
 f.close()
 
